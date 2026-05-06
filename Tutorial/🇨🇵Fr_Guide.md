@@ -1,512 +1,557 @@
-GUIDE ULTIME – Serveur Minecraft sur GitHub Codespaces (Crafty + Playit.gg)
+# 🟩 Serveur Minecraft gratuit sur GitHub Codespaces
 
-Version 1.0 – Mise à jour complète le 5 mai 2026 
+![Minecraft](https://img.shields.io/badge/Minecraft-1.21.4-62B47A?style=flat-square&logo=minecraft&logoColor=white)
+![Java](https://img.shields.io/badge/Java-21_LTS-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![PaperMC](https://img.shields.io/badge/PaperMC-1.21.4-0097D6?style=flat-square)
+![Crafty](https://img.shields.io/badge/Crafty_Controller-4.x-7B2FBE?style=flat-square)
+![Playit.gg](https://img.shields.io/badge/Playit.gg-tunnel-FF6B35?style=flat-square)
+![Usage](https://img.shields.io/badge/usage-éducatif%20%2F%20privé-lightgrey?style=flat-square)
 
----
-
-📌 INTRODUCTION
-
-Ce guide vous explique pas à pas, comme si vous n’aviez jamais utilisé Linux, GitHub, ni de serveur Minecraft, comment :
-
-· Obtenir un serveur Minecraft gratuit (60 h/mois) hébergé dans le cloud via GitHub Codespaces
-· Le gérer avec une interface web (Crafty Controller)
-· Permettre à vos amis de se connecter depuis Internet sans ouvrir vos ports (Playit.gg)
-
-Tout sera clair, détaillé et vérifié avec la documentation officielle de chaque outil, des forums, des vidéos YouTube, et des centaines d’autres sources. Aucune connaissance préalable requise.
+> ⚠️ Ce guide est prévu pour un usage éducatif et privé. Faire tourner un serveur 24h/24 dans Codespaces n'est pas conforme aux CGU de GitHub. Le script anti-veille sert uniquement à éviter les coupures *pendant* une session de jeu, dans le respect du quota de 60 h/mois.
 
 ---
 
-⚠️ AVERTISSEMENT IMPORTANT
+## 📋 Table des matières
 
-Ce guide est destiné à un usage éducatif et privé. L’exécution de serveurs de jeux en continu (24h/24 et 7j/7) dans GitHub Codespaces n’est pas une utilisation conforme aux conditions d’utilisation du service. La section sur le script anti-veille est fournie uniquement pour éviter les interruptions pendant les sessions de jeu le week-end, conformément au plan de quota. Utilisez-le de manière responsable pour ne pas dépasser vos 60 heures mensuelles gratuites.
-
----
-
-🔍 COMPRENDRE LES OUTILS
-
-Outil Rôle
-GitHub Codespaces Machine virtuelle Linux dans le cloud, accessible depuis un navigateur. 120 core‑hours gratuits/mois, soit 60 h sur une machine 2 cœurs.
-Java 25 (LTS) Dernière version Long-Term Support de Java, nécessaire pour exécuter Minecraft 26.1+. Java 25 est la version recommandée par PaperMC pour Minecraft 26.1 et ultérieur.
-PaperMC Version optimisée du serveur Minecraft. Plus fluide, moins de lag, compatible plugins. Pour Minecraft 26.1, utilisez Paper 26.1.2.
-Crafty Controller 4.10.4 Interface web pour gérer votre serveur Minecraft facilement.
-Playit.gg Service de tunnel qui vous donne une adresse IP publique pour que vos amis puissent rejoindre votre serveur, sans ouvrir de ports.
-
----
-
-📖 TABLE DES MATIÈRES
-
-1. Création des comptes
-2. Création du dépôt et du Codespace
-3. Se repérer dans le terminal Linux
-4. Installer Java 25 (LTS)
-5. Installer Python 3 et pip
-6. Télécharger et préparer PaperMC
-7. Configurer Playit.gg
-8. Installer Crafty Controller
-9. Ajouter le serveur dans Crafty
-10. Script anti‑veille (keep‑alive)
-11. Sauvegardes automatiques
-12. Checklist de démarrage d’une session
-13. Comment tout arrêter proprement
-14. Dépannage complet
-15. Rappel quota et surveillance
+- [Ce qu'on va faire](#-ce-quon-va-faire)
+- [Ce qu'il vous faut](#-ce-quil-vous-faut)
+- [Étape 0 — Comprendre les outils](#-étape-0--comprendre-les-outils)
+- [Étape 1 — Créer les comptes](#-étape-1--créer-les-comptes)
+- [Étape 2 — Créer le dépôt et le Codespace](#-étape-2--créer-le-dépôt-et-le-codespace)
+- [Étape 3 — Se repérer dans le terminal](#-étape-3--se-repérer-dans-le-terminal)
+- [Étape 4 — Installer Java 21](#-étape-4--installer-java-21-lts)
+- [Étape 5 — Installer Python 3 et pip](#-étape-5--installer-python-3-et-pip)
+- [Étape 6 — Télécharger PaperMC](#-étape-6--télécharger-et-préparer-papermc)
+- [Étape 7 — Configurer Playit.gg](#-étape-7--configurer-playitgg)
+- [Étape 8 — Installer Crafty Controller](#-étape-8--installer-crafty-controller)
+- [Étape 9 — Ajouter le serveur dans Crafty](#-étape-9--ajouter-le-serveur-dans-crafty)
+- [Étape 10 — Script anti-veille](#-étape-10--script-anti-veille)
+- [Étape 11 — Sauvegardes automatiques](#-étape-11--sauvegardes-automatiques)
+- [🟢 Démarrer une session](#-démarrer-une-session)
+- [🔴 Arrêter une session](#-arrêter-une-session)
+- [Dépannage](#-dépannage)
+- [Surveiller son quota](#-surveiller-son-quota)
 
 ---
 
-1. CRÉATION DES COMPTES
+## 🎯 Ce qu'on va faire
 
-1.1 Compte GitHub
+Utiliser le crédit gratuit de GitHub Codespaces pour faire tourner un serveur Minecraft dans le cloud, le gérer via une interface web (Crafty Controller), et le rendre accessible à vos amis depuis Internet sans toucher à votre box — grâce à Playit.gg.
 
-1. Rendez-vous sur https://github.com/signup
-2. Entrez un e‑mail valide, un mot de passe et un nom d’utilisateur.
-3. Résolvez le puzzle de vérification, puis cliquez sur Create account.
-4. Vous recevrez un code de vérification par e‑mail. Saisissez-le pour activer le compte.
-
-1.2 Compte Playit.gg
-
-1. Allez sur https://playit.gg
-2. Cliquez sur Login, puis tout en bas sur Sign up.
-3. Remplissez le formulaire (pseudo, e‑mail, mot de passe).
-4. Validez votre adresse e‑mail en cliquant sur le lien reçu.
+Aucune connaissance préalable requise. Chaque commande est expliquée.
 
 ---
 
-2. CRÉATION DU DÉPÔT ET DU CODESPACE
+## 🧰 Ce qu'il vous faut
 
-2.1 Créer le dépôt
+Tout est gratuit.
 
-1. Connectez‑vous à GitHub.
-2. En haut à droite, cliquez sur le + → New repository.
-3. Remplissez :
-   · Repository name : mc-server (ou autre)
-   · Visibilité : Private (recommandé)
-   · Cochez Add a README file
-4. Cliquez sur Create repository.
+| | Élément | Détail |
+|---|---|---|
+| 🌐 | Un navigateur web | Chrome, Firefox, Edge — version récente |
+| 📧 | Une adresse e-mail | Pour créer les deux comptes |
+| 🐙 | Un compte GitHub | Créé à l'étape 1 |
+| 🎮 | Un compte Playit.gg | Créé à l'étape 1 |
+| ⏱️ | ~45 minutes | Pour la première installation |
 
-2.2 Créer le Codespace
-
-1. Sur la page du dépôt, cliquez sur le bouton vert <> Code, puis sur l’onglet Codespaces.
-2. Configuration capitale : cliquez sur le bouton ... (à droite de « Create codespace on main ») → New with options.
-3. Machine type : sélectionnez 2‑core (8 Go RAM, 64 Go stockage). Ne choisissez surtout pas 4‑core si vous voulez rester dans les 60 h/mois.
-4. Laissez les autres options par défaut, puis cliquez sur Create codespace.
-5. Patientez 2‑3 minutes. Vous verrez un éditeur VS Code dans votre navigateur, avec un terminal en bas.
+> 💡 Une fois en place, relancer le serveur pour une nouvelle session prend moins de 3 minutes.
 
 ---
 
-3. SE REPÉRER DANS LE TERMINAL LINUX
+## 🔍 Étape 0 — Comprendre les outils
 
-Le terminal est la fenêtre où vous tapez des commandes. À l’ouverture, vous êtes dans /workspaces/mc-server.
+Cinq minutes à lire maintenant vous éviteront beaucoup de confusion par la suite.
 
-Commandes indispensables :
-
-Commande Description
-cd ~ Revenir au dossier personnel (home)
-cd ~/minecraft-server Aller dans le dossier minecraft-server
-pwd Afficher le dossier courant ( pratique pour vérifier où vous êtes )
-mkdir -p nom Créer un dossier (et ses parents si nécessaire)
-ls Lister les fichiers
-sudo Exécuter la commande suivante en tant qu’administrateur
-clear Effacer l’affichage
-
-Règle d’or : avant chaque commande importante, vérifiez votre dossier de travail avec pwd. Ce guide vous indiquera le dossier requis à chaque étape.
+| Outil | Rôle |
+|---|---|
+| **GitHub Codespaces** | Un ordinateur Linux dans le cloud, accessible depuis le navigateur. L'offre gratuite donne **120 core-hours/mois** → avec la machine 2 cœurs, ça fait **60 heures de jeu réelles**. |
+| **PaperMC** | Le moteur du serveur. Version améliorée du logiciel officiel Mojang : plus fluide, moins de lag, compatible plugins. |
+| **Playit.gg** | Le tunnel. GitHub ne donne pas d'IP publique — Playit.gg en crée une (`monserveur.playit.gg`) que vos amis entrent directement dans Minecraft. |
+| **Crafty Controller** | Le panneau de contrôle web. Démarrer, arrêter, surveiller le serveur en cliquant sur des boutons. |
 
 ---
 
-4. INSTALLER JAVA 25 (LTS)
+## 👤 Étape 1 — Créer les comptes
 
-Pourquoi Java 25 ? PaperMC 26.1+ exige Java 25, la dernière version LTS (Long‑Term Support). Java 26 est une version non‑LTS.
+### 🐙 GitHub
 
-4.1 Vérifier la version actuelle
+1. Allez sur [github.com/signup](https://github.com/signup)
+2. Entrez un e-mail, un mot de passe et un nom d'utilisateur
+3. Résolvez le puzzle → **Create account**
+4. Récupérez le code à 6 chiffres dans votre boîte mail et saisissez-le
+
+✅ Vous voyez votre nom d'utilisateur en haut à droite du tableau de bord GitHub.
+
+### 🎮 Playit.gg
+
+1. Allez sur [playit.gg](https://playit.gg)
+2. **Login** → en bas du formulaire → **Sign up**
+3. Remplissez les champs et validez
+4. Cliquez sur le lien de confirmation reçu par mail
+
+✅ Vous pouvez accéder à votre tableau de bord Playit.gg.
+
+---
+
+## 🏗️ Étape 2 — Créer le dépôt et le Codespace
+
+### Le dépôt
+
+Un dépôt (*repository*) est un dossier de projet sur GitHub. Il sert de base pour créer le Codespace.
+
+1. Sur GitHub : **`+`** en haut à droite → **New repository**
+2. Remplissez :
+   - **Repository name :** `mc-server`
+   - **Visibility :** `Private`
+   - ☑️ **Add a README file**
+3. **Create repository**
+
+✅ Vous êtes sur la page de votre dépôt `mc-server`.
+
+### Le Codespace
+
+> ⚠️ **Étape critique** — le choix de la machine détermine votre quota. Se tromper ici le divise par deux.
+
+1. Bouton vert **`<> Code`** → onglet **Codespaces**
+2. **`...`** (à droite de "Create codespace on main") → **New with options**
+3. **Machine type** → **`2-core`** (8 Go RAM) — ne pas choisir 4-core
+4. **Create codespace** → patientez 2-3 minutes
+
+Un éditeur VS Code s'ouvre dans votre navigateur avec un terminal en bas.
+
+✅ Vous voyez l'invite de commande dans le terminal.
+
+---
+
+## 💻 Étape 3 — Se repérer dans le terminal
+
+Le terminal est la zone où vous tapez des commandes. Copiez-collez simplement ce que le guide indique.
+
+| Commande | Ce qu'elle fait |
+|---|---|
+| `cd ~` | Retourner au dossier personnel |
+| `cd ~/minecraft-server` | Aller dans le dossier du serveur |
+| `pwd` | Afficher où vous êtes |
+| `mkdir -p nom` | Créer un dossier |
+| `ls` | Lister les fichiers |
+| `sudo` | Exécuter en administrateur |
+
+> 💡 **Règle d'or :** chaque étape de ce guide précise le dossier depuis lequel lancer la commande. En cas de doute, tapez `pwd`.
+
+---
+
+## ☕ Étape 4 — Installer Java 21 (LTS)
+
+Minecraft est écrit en Java. La version **21** est celle recommandée par PaperMC — c'est la version **LTS** (Long-Term Support) : la plus stable, la plus longtemps maintenue. Des versions plus récentes existent mais ne sont pas LTS.
+
+📍 *Depuis n'importe quel dossier.*
+
+Vérifiez d'abord si Java est déjà là :
 
 ```bash
-cd ~
 java -version
 ```
 
-Si vous voyez openjdk version "25.x.x", passez directement à la section 5. Sinon, poursuivez.
+🔵 Si vous voyez `openjdk version "21.0.x"` → passez à l'étape 5.
 
-4.2 Mettre à jour les paquets
-
-```bash
-sudo apt update -y && sudo apt upgrade -y
-```
-
-4.3 Installer Java 25
+Sinon :
 
 ```bash
-sudo apt install openjdk-25-jre-headless -y
+sudo apt update -y
+sudo apt install openjdk-21-jre-headless -y
 ```
-
-Explication : openjdk-25-jre-headless est une version de Java optimisée pour les serveurs (sans interface graphique).
-
-4.4 Vérifier l’installation
 
 ```bash
 java -version
 ```
 
-Doit afficher openjdk version "25.x.x".
+✅ La commande affiche `openjdk version "21.0.x"`.
 
 ---
 
-5. INSTALLER PYTHON 3 ET PIP
+## 🐍 Étape 5 — Installer Python 3 et pip
 
-Pourquoi Python ? Crafty Controller est écrit en Python. Il a besoin de Python 3.9+ et de pip.
+Crafty Controller est développé en Python. On a besoin de Python 3 et de `pip` (son gestionnaire de modules) pour l'installer et le faire tourner.
 
-5.1 Vérifier les versions
-
-```bash
-cd ~
-python3 --version
-pip3 --version
-```
-
-5.2 Installer si nécessaire
+📍 *Depuis votre dossier personnel (`cd ~`).*
 
 ```bash
 sudo apt install python3 python3-pip -y
 ```
 
-5.3 Vérification finale
-
 ```bash
 python3 --version && pip3 --version
 ```
 
-Les deux commandes doivent retourner un numéro de version, sans erreur.
+✅ Les deux commandes affichent un numéro de version, sans erreur.
 
 ---
 
-6. TÉLÉCHARGER ET PRÉPARER PAPERMC
+## 🧱 Étape 6 — Télécharger et préparer PaperMC
 
-Qu’est‑ce que PaperMC ? PaperMC est une version optimisée du serveur Minecraft officiel. Il corrige des bugs, réduit les lags et supporte les plugins. Paper 26.1.2 est la version stable pour Minecraft 26.1.
+### Créer le dossier
 
-6.1 Créer le dossier du serveur
+📍 *Depuis votre dossier personnel (`cd ~`).*
 
 ```bash
-cd ~
 mkdir -p ~/minecraft-server
 cd ~/minecraft-server
 ```
 
-6.2 Télécharger PaperMC via l’API
+### Installer jq
 
-Pour obtenir la dernière version automatiquement :
-
-```bash
-wget -O server.jar https://api.papermc.io/v2/projects/paper/versions/26.1/builds/$(curl -s https://api.papermc.io/v2/projects/paper/versions/26.1 | jq -r '.builds[-1]')/downloads/paper-26.1-$(curl -s https://api.papermc.io/v2/projects/paper/versions/26.1 | jq -r '.builds[-1]').jar
-```
-
-Si jq n’est pas installé :
+`jq` lit les réponses de l'API PaperMC pour récupérer automatiquement le dernier build stable.
 
 ```bash
 sudo apt install jq -y
 ```
 
-Puis relancez la commande de téléchargement.
-
-Alternative (version fixe) :
+### Télécharger PaperMC
 
 ```bash
-wget -O server.jar https://api.papermc.io/v2/projects/paper/versions/26.1/builds/124/downloads/paper-26.1-124.jar
+wget -O server.jar https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/$(curl -s https://api.papermc.io/v2/projects/paper/versions/1.21.4 | jq -r '.builds[-1]')/downloads/paper-1.21.4-$(curl -s https://api.papermc.io/v2/projects/paper/versions/1.21.4 | jq -r '.builds[-1]').jar
 ```
 
-6.3 Accepter l’EULA
+> 🔵 Si la commande échoue, utilisez ce build fixe :
+> ```bash
+> wget -O server.jar https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/196/downloads/paper-1.21.4-196.jar
+> ```
 
-Mojang impose d’accepter le contrat de licence (EULA) avant tout démarrage. Sans cela, le serveur refuse de fonctionner.
+✅ `ls` affiche `server.jar` dans la liste.
+
+### Accepter l'EULA
+
+> ⚠️ **Obligation légale.** Mojang exige l'acceptation du contrat de licence (EULA) avant tout démarrage. Sans ce fichier, le serveur refuse de se lancer. En exécutant la commande ci-dessous, vous acceptez les termes sur [aka.ms/MinecraftEULA](https://aka.ms/MinecraftEULA).
 
 ```bash
 echo "eula=true" > eula.txt
 ```
 
-Vérifiez avec ls que eula.txt est bien présent.
+✅ `ls` montre `eula.txt` à côté de `server.jar`.
 
-6.4 Premier lancement (test)
+### Premier lancement de test
 
 ```bash
 java -Xms2G -Xmx4G -jar server.jar --nogui
 ```
 
-· -Xms2G : démarre avec 2 Go de RAM.
-· -Xmx4G : peut utiliser jusqu’à 4 Go (adapté à une machine de 8 Go).
-
-Patientez jusqu’au message Done! dans la console. Tapez ensuite stop pour arrêter proprement.
+Attendez le message `Done!` (1-2 min), puis arrêtez :
 
 ```bash
 stop
 ```
 
-6.5 Script de démarrage
+✅ Le serveur s'arrête proprement et vous retrouvez l'invite de commande.
 
-Créez un script pour simplifier les lancements futurs :
+### Créer le script de démarrage
+
+Ces paramètres s'appellent les *Aikar's flags* — des optimisations mémoire reconnues dans la communauté Minecraft pour réduire significativement les lags.
+
+📍 *Retournez dans votre dossier personnel (`cd ~`).*
 
 ```bash
-cd ~
 nano start.sh
 ```
 
-Collez le contenu suivant :
+Collez :
 
 ```bash
 #!/bin/bash
 cd ~/minecraft-server
-java -Xms4G -Xmx4G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=40 -XX:G1MaxNewSizePercent=50 -XX:G1HeapRegionSize=16M -XX:G1ReservePercent=15 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=20 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -jar server.jar --nogui
+java -Xms4G -Xmx4G \
+  -XX:+UseG1GC \
+  -XX:+ParallelRefProcEnabled \
+  -XX:MaxGCPauseMillis=200 \
+  -XX:+UnlockExperimentalVMOptions \
+  -XX:+DisableExplicitGC \
+  -XX:+AlwaysPreTouch \
+  -XX:G1NewSizePercent=40 \
+  -XX:G1MaxNewSizePercent=50 \
+  -XX:G1HeapRegionSize=16M \
+  -XX:G1ReservePercent=15 \
+  -XX:G1HeapWastePercent=5 \
+  -XX:G1MixedGCCountTarget=4 \
+  -XX:InitiatingHeapOccupancyPercent=20 \
+  -XX:G1MixedGCLiveThresholdPercent=90 \
+  -XX:G1RSetUpdatingPauseTimePercent=5 \
+  -XX:SurvivorRatio=32 \
+  -XX:+PerfDisableSharedMem \
+  -XX:MaxTenuringThreshold=1 \
+  -jar server.jar --nogui
 ```
 
-Explication : ces flags (appelés « Aikar’s flags ») optimisent le garbage collector Java et améliorent les performances du serveur.
-
-Pour sauvegarder : Ctrl+X, puis Y, puis Entrée.
-
-Rendez le script exécutable :
+Sauvegardez : **Ctrl+X** → **Y** → **Entrée**
 
 ```bash
 chmod +x ~/start.sh
 ```
 
+✅ `ls -l ~/start.sh` affiche `-rwxr-xr-x` en début de ligne.
+
 ---
 
-7. CONFIGURER PLAYIT.GG
+## 📡 Étape 7 — Configurer Playit.gg
 
-Pourquoi Playit.gg ? GitHub Codespaces ne fournit pas d’adresse IP publique fixe. Playit.gg crée un tunnel qui permet à vos amis de se connecter depuis Internet.
+Votre Codespace n'a pas d'adresse IP publique. Playit.gg crée un tunnel et vous fournit une adresse que vos amis entrent directement dans Minecraft — aucune configuration réseau de votre côté.
 
-7.1 Installer l’agent Playit.gg
+📍 *Depuis votre dossier personnel (`cd ~`).*
+
+### Installer l'agent
 
 ```bash
-cd ~
 curl -SsL https://playit-cloud.github.io/ppa/install.sh | bash
 ```
 
-Cette commande ajoute le dépôt Playit et installe le programme.
-
-7.2 Lier l’agent à votre compte
+### Lier l'agent à votre compte
 
 ```bash
 playit
 ```
 
-Après quelques secondes, un lien d’authentification apparaît dans le terminal.Ouvrez ce lien dans votre navigateur (clic droit → Ouvrir le lien, ou copiez‑collez‑le). Connectez‑vous à Playit.gg et suivez les instructions pour lier l’agent.
-
-Laissez le programme playit tourner. Pour le lancer en arrière‑plan, utilisez Ctrl+C puis :
+Un lien d'authentification apparaît dans le terminal. Ouvrez-le dans votre navigateur → connectez-vous → **Claim Agent**. Revenez dans le terminal → **Ctrl+C** → relancez en arrière-plan :
 
 ```bash
 playit &
 ```
 
-7.3 Créer le tunnel Minecraft
+### Créer le tunnel
 
-1. Allez sur https://playit.gg et connectez‑vous.
-2. Dans le tableau de bord, cliquez sur Tunnels.
-3. Cliquez sur Add Tunnel.
-4. Type : choisissez Minecraft Java (Game).
-5. Name : MonServeur (ou autre).
-6. Local Port : 25565 (port par défaut de Minecraft Java).
-7. Cliquez sur Add Tunnel.
-8. Notez l’adresse publique (ex. monserveur.playit.gg:12345). C’est l’adresse que vos amis devront entrer dans Minecraft.
+1. Sur [playit.gg](https://playit.gg) → **Tunnels** → **Add Tunnel**
+2. Remplissez :
+   - **Type :** `Minecraft Java (Game)`
+   - **Name :** `MonServeur`
+   - **Local Port :** `25565`
+3. **Add Tunnel**
+
+📌 L'adresse publique s'affiche (ex. `monserveur.playit.gg:12345`). **Notez-la — c'est ce que vous donnez à vos amis.**
+
+✅ Le tunnel apparaît dans le tableau de bord avec le statut "Connected".
 
 ---
 
-8. INSTALLER CRAFTY CONTROLLER
+## 🎛️ Étape 8 — Installer Crafty Controller
 
-Qu’est‑ce que Crafty ? Crafty Controller est un panneau de contrôle web qui permet de gérer votre serveur Minecraft via une interface graphique.
+Crafty Controller est un panneau de contrôle web : démarrer, arrêter, voir les logs, gérer les joueurs — depuis l'interface, sans ligne de commande.
 
-8.1 Installation via le script officiel (recommandé)
+📍 *Depuis votre dossier personnel (`cd ~`).*
 
 ```bash
-cd ~
 git clone https://gitlab.com/crafty-controller/crafty-installer-4.0.git
 cd crafty-installer-4.0
 sudo ./install_crafty.sh
 ```
 
-Ce script officiel gère toute l’installation : dépendances, utilisateur dédié, environnement Python, etc.
+Le script pose quelques questions :
 
-Le script vous posera des questions :
+| Question | Réponse |
+|---|---|
+| Port | Appuyez sur **Entrée** (garde `8443`) |
+| Utilisateur | `crafty` |
+| Mot de passe admin | Choisissez-en un et **notez-le** |
+| Confirmation | `y` |
 
-· Port : appuyez sur Entrée pour garder 8443.
-· Utilisateur : tapez crafty.
-· Mot de passe admin : choisissez un mot de passe sécurisé (notez‑le !).
-· Confirmation : y.
+L'installation prend 3-5 minutes.
 
-8.2 Démarrer Crafty
+### Démarrer Crafty
 
 ```bash
 sudo -u crafty bash -c "source /var/opt/minecraft/crafty/.venv/bin/activate && cd /var/opt/minecraft/crafty/crafty-4 && python3 main.py"
 ```
 
-Cette commande exécute Crafty en tant qu’utilisateur crafty, dans son environnement virtuel Python.
+### Rendre l'interface accessible
 
-8.3 Rendre Crafty accessible depuis le navigateur
+1. VS Code → onglet **PORTS** en bas
+2. Si `8443` n'apparaît pas → **Add Port** → `8443` → validez
+3. Clic droit sur `8443` → **Port Visibility** → **Public**
+4. Ouvrez l'URL générée dans un nouvel onglet
+5. Avertissement de sécurité → **Avancé** → **Procéder**
+6. Connectez-vous : `admin` + votre mot de passe
 
-1. Dans VS Code, en bas, cliquez sur l’onglet PORTS.
-2. Si le port 8443 n’apparaît pas automatiquement, cliquez sur Add Port, tapez 8443, validez.
-3. Faites un clic droit sur le port 8443 → Port Visibility → Public.
-4. Ouvrez l’URL générée (ex. https://votrecodespace-8443.preview.app.github.dev) dans un nouvel onglet.
-5. Acceptez l’avertissement de sécurité (certificat auto‑signé) : « Avancé » → « Procéder… ».
-6. Connectez‑vous avec le nom d’utilisateur admin et le mot de passe défini.
-
----
-
-9. AJOUTER LE SERVEUR DANS CRAFTY
-
-1. Dans le panneau Crafty, cliquez sur Servers → Create Server.
-2. Remplissez :
-   · Server Name : MonServeur
-   · Server Type : Paper (dans la liste déroulante)
-   · Server Jar : server.jar
-   · Server Path : /home/codespace/minecraft-server
-   · Max RAM : 4096 (4 Go)
-   · Min RAM : 2048 (2 Go)
-   · Server Port : 25565
-3. Cliquez sur Create Server.
-4. Votre serveur apparaît. Vous pouvez le démarrer/arrêter depuis l’interface.
+✅ Vous êtes sur le tableau de bord Crafty Controller.
 
 ---
 
-10. SCRIPT ANTI‑VEILLE (KEEP‑ALIVE)
+## 🔗 Étape 9 — Ajouter le serveur dans Crafty
 
-GitHub Codespaces s’arrête après 30 minutes d’inactivité par défaut.Pour éviter l’arrêt en pleine partie, créez un script d’activité factice.
+**Servers** → **Create Server** → remplissez :
+
+| Champ | Valeur |
+|---|---|
+| Server Name | `MonServeur` |
+| Server Type | `Paper` |
+| Server Jar | `server.jar` |
+| Server Path | `/home/codespace/minecraft-server` |
+| Max RAM | `4096` |
+| Min RAM | `2048` |
+| Server Port | `25565` |
+
+**Create Server**
+
+> 💡 Au tout premier démarrage, Crafty peut afficher un pop-up pour accepter l'EULA. Cliquez sur **I Accept** puis relancez.
+
+✅ Le serveur passe en statut "Running" (vert) dans l'interface.
+
+---
+
+## ⏳ Étape 10 — Script anti-veille
+
+Un Codespace s'arrête automatiquement après 30 minutes d'inactivité. Ce script envoie un signal toutes les 10 minutes pour maintenir la session active pendant vos parties.
+
+📍 *Depuis votre dossier personnel (`cd ~`).*
 
 ```bash
-cd ~
 nano keep-alive.sh
 ```
 
-Collez le contenu :
+Collez :
 
 ```bash
 #!/bin/bash
-# Script keep-alive pour GitHub Codespaces
+# Maintien d'activité pour GitHub Codespaces
 while true; do
     echo "$(date) - keep-alive ping" >> ~/keep-alive.log
     sleep 600
 done
 ```
 
-Sauvegardez (Ctrl+X, Y, Entrée) puis :
+**Ctrl+X** → **Y** → **Entrée**, puis :
 
 ```bash
 chmod +x ~/keep-alive.sh
-```
-
-Pour le lancer en arrière‑plan :
-
-```bash
 nohup ~/keep-alive.sh &
 ```
 
-nohup permet au script de continuer même si vous fermez le terminal. Le & le lance en tâche de fond.
+`nohup` empêche le script de s'arrêter si votre session se ferme. Le `&` le passe en tâche de fond.
+
+✅ Après quelques minutes, `cat ~/keep-alive.log` affiche des lignes horodatées.
 
 ---
 
-11. SAUVEGARDES AUTOMATIQUES
+## 💾 Étape 11 — Sauvegardes automatiques
+
+Ce script crée une archive compressée de votre monde toutes les heures. En cas de corruption, vous revenez à une sauvegarde récente.
+
+📍 *Depuis votre dossier personnel (`cd ~`).*
 
 ```bash
-cd ~
 mkdir -p ~/minecraft-server-backups
 nano backup.sh
 ```
 
-Collez le contenu :
+Collez :
 
 ```bash
 #!/bin/bash
-tar -czf ~/minecraft-server-backups/world-$(date +%Y%m%d-%H%M%S).tar.gz -C ~/minecraft-server world world_nether world_the_end
+# Sauvegarde automatique du monde Minecraft
+tar -czf ~/minecraft-server-backups/world-$(date +%Y%m%d-%H%M%S).tar.gz \
+  -C ~/minecraft-server world world_nether world_the_end
+echo "$(date) - Sauvegarde effectuée." >> ~/backup.log
 ```
 
-Sauvegardez, puis :
+**Ctrl+X** → **Y** → **Entrée**, puis :
 
 ```bash
 chmod +x ~/backup.sh
-```
-
-Planifiez une sauvegarde toutes les heures :
-
-```bash
 (crontab -l 2>/dev/null; echo "0 * * * * /home/codespace/backup.sh") | crontab -
 ```
 
+✅ `crontab -l` affiche la ligne de planification.
+
 ---
 
-12. CHECKLIST DE DÉMARRAGE D’UNE SESSION
+## 🟢 Démarrer une session
 
-À chaque nouvelle session de jeu, exécutez ces commandes dans l’ordre :
+> 📌 À chaque ouverture du Codespace, copiez-collez ces 4 commandes dans le terminal dans cet ordre.
 
 ```bash
-# 1. Script anti-veille
+# 1. Anti-veille
 nohup ~/keep-alive.sh &
 
-# 2. Agent Playit.gg
+# 2. Tunnel Playit.gg
 playit &
 
-# 3. Serveur Minecraft (via Crafty ou directement)
-cd ~/minecraft-server && ./start.sh &
+# 3. Serveur Minecraft
+cd ~/minecraft-server && ~/start.sh &
 
 # 4. Interface Crafty
 sudo -u crafty bash -c "source /var/opt/minecraft/crafty/.venv/bin/activate && cd /var/opt/minecraft/crafty/crafty-4 && python3 main.py" &
 ```
 
+Attendez 1-2 minutes → vérifiez "Running" dans Crafty → donnez l'adresse Playit.gg à vos amis. 🎮
+
 ---
 
-13. COMMENT TOUT ARRÊTER PROPREMENT
+## 🔴 Arrêter une session
 
-13.1 Arrêter le serveur Minecraft
+> ⚠️ **Fermer l'onglet ne suffit pas.** Le Codespace continue de tourner en arrière-plan et consomme votre quota. Suivez ces étapes à chaque fin de session.
 
-· Via Crafty : interface web → Stop.
-· Via la console : tapez stop dans le terminal où le serveur tourne.
+**1 — Arrêter le serveur Minecraft**
 
-13.2 Arrêter Playit.gg
+Via Crafty : bouton ⏹️ dans l'interface.
+
+Via le terminal :
+```bash
+kill $(pgrep -f "server.jar")
+```
+
+**2 — Arrêter les processus en arrière-plan**
 
 ```bash
 pkill -f playit
-```
-
-13.3 Arrêter le script keep-alive
-
-```bash
 pkill -f keep-alive.sh
-```
-
-13.4 Arrêter Crafty
-
-```bash
 pkill -f "python3 main.py"
 ```
 
-13.5 Arrêter le Codespace
+**3 — Arrêter le Codespace** ← étape la plus importante
 
-C’est l’étape la plus importante pour ne pas gaspiller votre quota.
+Depuis GitHub (recommandé) :
+1. [github.com/codespaces](https://github.com/codespaces)
+2. Votre Codespace actif (🟢 point vert)
+3. **`...`** → **Stop codespace**
 
-Méthode 1 – Via l’éditeur : en bas à gauche, cliquez sur le nom du Codespace → Stop Current Codespace.
+Depuis l'éditeur : bas à gauche → nom du Codespace → **Stop Current Codespace**
 
-Méthode 2 – Via GitHub : https://github.com/codespaces → repérez votre Codespace actif (point vert) → … → Stop codespace.
-
----
-
-14. DÉPANNAGE COMPLET
-
-Problème Cause probable Solution
-java -version affiche une version < 25 Java 25 non installé Refaites la section 4
-pip3: command not found pip non installé sudo apt install python3-pip -y
-Permission denied sur un script .sh Script non exécutable chmod +x nom_du_script.sh
-Le serveur refuse de démarrer (EULA) eula.txt absent echo "eula=true" > ~/minecraft-server/eula.txt
-L’adresse Playit.gg ne fonctionne pas Agent Playit non lancé Vérifiez avec ps aux \| grep playit, relancez si nécessaire
-Impossible d’accéder à Crafty (8443) Port non public Onglet PORTS → clic droit sur 8443 → Port Visibility → Public
-Codespace s’arrête au bout de 30 min Script keep‑alive non lancé nohup ~/keep-alive.sh &
-Erreur jq: command not found jq non installé sudo apt install jq -y
-Dépassement du quota de core‑hours Plus de 120 core‑hours consommés Surveillez votre utilisation, arrêtez le Codespace après chaque session
+✅ Le point vert devient gris. Le Codespace est arrêté.
 
 ---
 
-15. RAPPEL QUOTA ET SURVEILLANCE
+## 🆘 Dépannage
 
-· 120 core‑hours gratuits par mois (60 h sur machine 2‑cœurs).
-· Pour surveiller votre consommation : GitHub → votre avatar → Settings → Billing & plans → Usage this month.
-· Arrêtez toujours le Codespace après chaque session (section 13.5).
+| Symptôme | Solution |
+|---|---|
+| ❌ `java -version` n'affiche pas `21.x` | Refaites l'étape 4 depuis le début |
+| ❌ `pip3: command not found` | `sudo apt install python3-pip -y` |
+| ❌ `Permission denied` sur un `.sh` | `chmod +x nom_du_script.sh` |
+| ❌ Serveur refuse de démarrer (EULA) | `echo "eula=true" > ~/minecraft-server/eula.txt` |
+| ❌ L'adresse Playit.gg ne fonctionne pas | `ps aux \| grep playit` → si absent, relancez : `playit &` |
+| ❌ Crafty inaccessible (port 8443) | Onglet **PORTS** → clic droit `8443` → **Port Visibility** → **Public** |
+| ❌ Codespace s'arrête en pleine partie | `nohup ~/keep-alive.sh &` |
+| ❌ `jq: command not found` | `sudo apt install jq -y` puis relancez le téléchargement |
+| ❌ `OutOfMemoryError` dans les logs | Vérifiez que la machine est bien **2-core / 8 Go RAM** |
+
+Pour tout autre problème : copiez le message d'erreur exact sur [Stack Overflow](https://stackoverflow.com) avec le tag `[minecraft]` ou `[github-codespaces]`. Communautés : [Discord PaperMC](https://discord.gg/papermc) · [Discord Playit.gg](https://discord.gg/playit-gg)
 
 ---
 
-📄 NOTES FINALES
+## 📊 Surveiller son quota
 
-Ce guide a été rédigé après consultation de plus de 1000 sources : documentation officielle GitHub Codespaces, PaperMC, Playit.gg, Crafty Controller, Java 25, Minecraft 26.1, forums, vidéos YouTube, Reddit, et bien d’autres. Toutes les commandes ont été testées sur un Codespace fraîchement créé le 5 mai 2026.
+GitHub offre **120 core-hours gratuits par mois**. Avec la machine 2 cœurs, chaque heure de jeu en consomme 2 → **60 heures réelles par mois**.
 
-Bon jeu à vous et vos amis !
+Pour voir votre consommation : **avatar GitHub** → **Settings** → **Billing & plans** → **Usage this month** → ligne **Codespaces**
+
+> ⚠️ Si vous approchez des 120 core-hours, arrêtez le Codespace immédiatement et attendez le renouvellement mensuel.
+
+---
+
+## 📎 Ressources
+
+- [Documentation PaperMC](https://docs.papermc.io)
+- [Documentation Crafty Controller](https://docs.craftycontrol.com)
+- [Documentation Playit.gg](https://playit.gg/support)
+- [Documentation GitHub Codespaces](https://docs.github.com/en/codespaces)
+- [Discord PaperMC](https://discord.gg/papermc)
+- [Discord Playit.gg](https://discord.gg/playit-gg)
+
+---
+
+*Testé sur un Codespace fraîchement créé — mai 2026.*
