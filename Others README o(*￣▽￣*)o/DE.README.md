@@ -171,7 +171,7 @@ Verteilt unter der **MIT-Lizenz**. Freie Nutzung, Änderung und Weitergabe unter
 
 **Bereit zum Spielen?**
 
-### 👉 [Vollständige Anleitung öffnen – DE_Guide.md](Tutorial/🇩🇪De_Guide.md)
+### 👉 [Vollständige Anleitung öffnen - DE_Guide.md](Tutorial/🇩🇪De_Guide.md)
 
 *Danke an die Communities PaperMC, Crafty Controller, Playit.gg und GitHub.*
 
