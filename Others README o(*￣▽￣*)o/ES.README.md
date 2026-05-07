@@ -157,7 +157,7 @@ Esta guía se mantiene con cuidado, pero los errores ocurren. ¿Has visto una er
 | [Discord PaperMC](https://discord.gg/papermc) | Preguntas sobre el servidor Minecraft |
 | [Discord Playit.gg](https://discord.gg/playit) | Problemas de túnel / red |
 | [Stack Overflow](https://stackoverflow.com) | Errores Linux / Java con etiquetas `[minecraft]` `[github-codespaces]` |
-| [Issues GitHub](../../issues) | Problemas específicos de esta guía |
+| [Issues GitHub](../../../issues) | Problemas específicos de esta guía |
 
 ---
 
