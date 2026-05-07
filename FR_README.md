@@ -78,7 +78,7 @@ Voir le guide dans le dossier "tutorial"
 
 ⚠️ Section actuellement en construction.
 Les informations ci-dessous ne sont que des prévisions.
-Voir le guide dans le dossier [`tutorial`](Tutorial)
+Voir le guide dans le dossier [`Docs`](Docs)
 
 
 ```bash
@@ -95,7 +95,7 @@ bash start.sh
 # 5. Ouvrez Crafty Controller sur le port 8443
 ```
 
-> **Pour le guide détaillé, voir [`FR_GUIDE.md`](Tutorial/🇨🇵Fr_Guide.md).**
+> **Pour le guide détaillé, voir [`FR_GUIDE.md`](Docs/FR_Guide.md).**
 
 ---
 
