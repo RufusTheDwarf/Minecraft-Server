@@ -62,7 +62,7 @@ Vous avez besoin **uniquement** de :
 
 ⚠️ Section actuellement en construction.
 Les informations ci-dessous ne sont que des prévisions.
-Voir le guide dans le dossier [`Docs`](Docs)
+Voir le guide dans le dossier [`Docs`](../Docs)
 
 | Fichier | Rôle |
 |---|---|
@@ -78,7 +78,7 @@ Voir le guide dans le dossier [`Docs`](Docs)
 
 ⚠️ Section actuellement en construction.
 Les informations ci-dessous ne sont que des prévisions.
-Voir le guide dans le dossier [`Docs`](Docs)
+Voir le guide dans le dossier [`Docs`](../Docs)
 
 
 ```bash
