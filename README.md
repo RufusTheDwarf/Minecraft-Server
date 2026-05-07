@@ -53,7 +53,6 @@ Vous avez besoin **uniquement** de :
 - [ ] Un **navigateur web** (Chrome, Firefox, Edge…)
 - [ ] Un **compte GitHub** gratuit — [s'inscrire ici](https://github.com/signup)
 - [ ] Un **compte Playit.gg** gratuit — [s'inscrire ici](https://playit.gg)
-- [ ] Une **licence Minecraft** valide (pour vous connecter au serveur)
 
 **Aucun logiciel à installer sur votre machine.**
 
@@ -96,17 +95,13 @@ bash start.sh
 # 5. Ouvrez Crafty Controller sur le port 8443
 ```
 
-> **Pour le guide détaillé, voir [`GUIDE.md`](GUIDE.md).**
+> **Pour le guide détaillé, voir [`FR_GUIDE.md`](Tutorial/🇨🇵Fr_Guide.md).**
 
 ---
 
 ## 🗂️ Contenu du guide ( À venir )
 
-⚠️ Section actuellement en construction.
-Les informations ci-dessous ne sont que des prévisions.
-Voir le guide dans le dossier "tutorial"
-
-Le fichier `GUIDE.md` couvre les 17 étapes suivantes :
+Le fichier `FR_GUIDE.md` couvre les 17 étapes suivantes :
 
 1. Introduction et matériel requis
 2. Comprendre les outils (Codespaces, PaperMC, Crafty, Playit.gg)
@@ -183,8 +178,8 @@ Distribué sous licence **MIT**. Libre d'utilisation, modification et redistribu
 
 **Prêt à jouer ?**
 
-### 👉 [Ouvrir le guide complet — GUIDE.md](GUIDE.md)
-(Faux lien... actuellement en construction...🏗)
+### 👉 [Ouvrir le guide complet — GUIDE.md](Tutorial/🇨🇵Fr_Guide.md)
+
 *Merci aux communautés PaperMC, Crafty Controller, Playit.gg et GitHub.*
 
 </div>
