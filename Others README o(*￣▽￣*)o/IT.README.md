@@ -157,7 +157,7 @@ Questa guida è mantenuta con cura, ma gli errori capitano. Hai trovato un refus
 | [Discord PaperMC](https://discord.gg/papermc) | Domande sul server Minecraft |
 | [Discord Playit.gg](https://discord.gg/playit) | Problemi di tunnel / rete |
 | [Stack Overflow](https://stackoverflow.com) | Errori Linux / Java con tag `[minecraft]` `[github-codespaces]` |
-| [Issues GitHub](../../issues) | Problemi specifici di questa guida |
+| [Issues GitHub](../../../issues) | Problemi specifici di questa guida |
 
 ---
 
