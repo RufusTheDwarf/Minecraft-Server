@@ -152,8 +152,8 @@ Chaque étape contient : l'explication du *pourquoi*, les commandes exactes à c
 
 Ce guide est maintenu avec soin, mais les erreurs arrivent. Vous avez repéré une coquille, une commande obsolète ou un point à améliorer ?
 
-1. **Ouvrez une [Issue](../issues)** pour signaler le problème
-2. **Proposez une [Pull Request](../pulls)** avec vos corrections
+1. **Ouvrez une [Issue](../../../issues)** pour signaler le problème
+2. **Proposez une [Pull Request](../../../pulls)** avec vos corrections
 
 ---
 
