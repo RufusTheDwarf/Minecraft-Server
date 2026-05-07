@@ -16,7 +16,7 @@
 
 Ce dépôt est un **guide complet, pas-à-pas et intégralement vérifié** pour héberger votre propre serveur Minecraft **gratuitement** sur GitHub Codespaces.
 
-Vous et vos amis pouvez jouer ensemble sur un serveur performant, accessible depuis n'importe où dans le monde — **sans dépenser un centime**, en restant dans les quotas gratuits de GitHub.
+Vous et vos amis pouvez jouer ensemble sur un serveur performant, accessible depuis n'importe où dans le monde **sans dépenser un centime**, en restant dans les quotas gratuits de GitHub.
 
 ```
 Navigateur web → GitHub Codespace (Linux) → PaperMC → Playit.gg → Vos amis 🎮
@@ -24,9 +24,9 @@ Navigateur web → GitHub Codespace (Linux) → PaperMC → Playit.gg → Vos am
 
 **Ce que vous obtenez :**
 - 🖥️ **Machine virtuelle Linux** dans le cloud (2 cœurs, 8 Go RAM, 32 Go stockage)
-- 🟢 **PaperMC** — le serveur Minecraft le plus optimisé et stable du marché
-- 🧭 **Crafty Controller** — panneau web pour gérer le serveur en quelques clics
-- 🌐 **Playit.gg** — tunnel public pour connecter vos amis sans configuration réseau
+- 🟢 **PaperMC** - le serveur Minecraft le plus optimisé et stable du marché
+- 🧭 **Crafty Controller** - panneau web pour gérer le serveur en quelques clics
+- 🌐 **Playit.gg** - tunnel public pour connecter vos amis sans configuration réseau
 - 💾 **Sauvegardes automatiques** et **script anti-veille** inclus
 
 ---
@@ -37,10 +37,10 @@ Navigateur web → GitHub Codespace (Linux) → PaperMC → Playit.gg → Vos am
 
 | Votre profil | Ce guide vous convient ? |
 |---|---|
-| Débutant complet, jamais touché à Linux | ✅ Oui — tout est expliqué, justifié |
-| Habitué du terminal | ✅ Oui — allez à l'essentiel |
-| Sans expérience en réseau ou administration | ✅ Oui — Playit.gg gère ça pour vous |
-| Sans budget | ✅ Oui — 100% gratuit dans les quotas |
+| Débutant complet, jamais touché à Linux | ✅ Oui - tout est expliqué, justifié |
+| Habitué du terminal | ✅ Oui - allez à l'essentiel |
+| Sans expérience en réseau ou administration | ✅ Oui - Playit.gg gère ça pour vous |
+| Sans budget | ✅ Oui - 100% gratuit dans les quotas |
 
 > Si vous savez **copier-coller** et **suivre des instructions**, vous pouvez créer ce serveur.
 
@@ -51,8 +51,8 @@ Navigateur web → GitHub Codespace (Linux) → PaperMC → Playit.gg → Vos am
 Vous avez besoin **uniquement** de :
 
 - [ ] Un **navigateur web** (Chrome, Firefox, Edge…)
-- [ ] Un **compte GitHub** gratuit — [s'inscrire ici](https://github.com/signup)
-- [ ] Un **compte Playit.gg** gratuit — [s'inscrire ici](https://playit.gg)
+- [ ] Un **compte GitHub** gratuit - [s'inscrire ici](https://github.com/signup)
+- [ ] Un **compte Playit.gg** gratuit - [s'inscrire ici](https://playit.gg)
 
 **Aucun logiciel à installer sur votre machine.**
 
@@ -66,7 +66,7 @@ Voir le guide dans le dossier "tutorial"
 
 | Fichier | Rôle |
 |---|---|
-| `README.md` | Ce fichier — vue d'ensemble du projet |
+| `README.md` | Ce fichier - vue d'ensemble du projet |
 | `GUIDE.md` | 📘 **Le guide complet**, étape par étape |
 | `start.sh` | Lance le serveur avec les optimisations Aikar's Flags |
 | `keep-alive.sh` | Empêche le Codespace de s'endormir automatiquement |
@@ -163,7 +163,7 @@ Ce guide est maintenu avec soin, mais les erreurs arrivent. Vous avez repéré u
 |---|---|
 | [Discord PaperMC](https://discord.gg/papermc) | Questions sur le serveur Minecraft |
 | [Discord Playit.gg](https://discord.gg/playit) | Problèmes de tunnel réseau |
-| [Stack Overflow](https://stackoverflow.com) | Erreurs Linux / Java — tags `[minecraft]` `[github-codespaces]` |
+| [Stack Overflow](https://stackoverflow.com) | Erreurs Linux / Java tags `[minecraft]` `[github-codespaces]` |
 | [Issues GitHub](../../issues) | Problèmes spécifiques à ce guide |
 
 ---
@@ -178,7 +178,7 @@ Distribué sous licence **MIT**. Libre d'utilisation, modification et redistribu
 
 **Prêt à jouer ?**
 
-### 👉 [Ouvrir le guide complet — GUIDE.md](Tutorial/🇨🇵Fr_Guide.md)
+### 👉 [Ouvrir le guide complet - GUIDE.md](Tutorial/🇨🇵Fr_Guide.md)
 
 *Merci aux communautés PaperMC, Crafty Controller, Playit.gg et GitHub.*
 
