@@ -60,7 +60,7 @@
 
 ⚠️ このセクションは現在作成中です。  
 以下の情報はプレビューです。  
-ガイドは [`Docs`](Docs) フォルダを参照してください。
+ガイドは [`Docs`](../Docs) フォルダを参照してください。
 
 | ファイル | 役割 |
 |---|---|
@@ -76,7 +76,7 @@
 
 ⚠️ このセクションは現在作成中です。  
 以下の情報はプレビューです。  
-ガイドは [`Docs`](Docs) フォルダを参照してください。
+ガイドは [`Docs`](../Docs) フォルダを参照してください。
 
     # 1. このリポジトリをGitHub Codespaceにクローン
     # 2. Java 21をインストール
@@ -90,7 +90,7 @@
 
     # 5. ポート8443でCrafty Controllerを開く
 
-> **詳細ガイドは [`JA_GUIDE.md`](Docs/JA_Guide.md) をご覧ください。**
+> **詳細ガイドは [`JA_GUIDE.md`](../Docs/JA_Guide.md) をご覧ください。**
 
 ---
 
@@ -145,8 +145,8 @@
 
 このガイドは慎重にメンテナンスされていますが、誤りが発生することがあります。誤字、古いコマンド、改善点を見つけましたか？
 
-1. **問題を報告する [Issue](../../issues)** を作成してください
-2. 修正を含む **[Pull Request](../../pulls)** を提案してください
+1. **問題を報告する [Issue](../../../issues)** を作成してください
+2. 修正を含む **[Pull Request](../../../pulls)** を提案してください
 
 ---
 
@@ -157,7 +157,7 @@
 | [PaperMC Discord](https://discord.gg/papermc) | Minecraftサーバーに関する質問 |
 | [Playit.gg Discord](https://discord.gg/playit) | トンネル/ネットワークの問題 |
 | [Stack Overflow](https://stackoverflow.com) | Linux/Javaエラー (`[minecraft]` `[github-codespaces]`) |
-| [GitHub Issues](../../issues) | 本ガイド固有の問題 |
+| [GitHub Issues](../../../issues) | 本ガイド固有の問題 |
 
 ---
 
