@@ -90,7 +90,7 @@ See the guide in the [`Docs`](Docs) folder.
 
     # 5. Open Crafty Controller on port 8443
 
-> **For the detailed guide, see [`EN_GUIDE.md`](Docs/EN_Guide.md).**
+> **For the detailed guide, see [`EN_GUIDE.md`](Docs/EN.GUIDE.md).**
 
 ---
 
