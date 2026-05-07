@@ -60,7 +60,7 @@ Ti servono solo:
 
 ⚠️ Questa sezione è in fase di costruzione.  
 Le informazioni che seguono sono solo indicative.  
-Vedi la guida nella cartella [`Docs`](Docs).
+Vedi la guida nella cartella [`Docs`](../Docs).
 
 | File | Ruolo |
 |---|---|
@@ -76,7 +76,7 @@ Vedi la guida nella cartella [`Docs`](Docs).
 
 ⚠️ Questa sezione è in fase di costruzione.  
 Le informazioni che seguono sono solo indicative.  
-Vedi la guida nella cartella [`Docs`](Docs).
+Vedi la guida nella cartella [`Docs`](../Docs).
 
     # 1. Clona questo repository in un Codespace GitHub
     # 2. Installa Java 21
@@ -90,7 +90,7 @@ Vedi la guida nella cartella [`Docs`](Docs).
 
     # 5. Apri Crafty Controller sulla porta 8443
 
-> **Per la guida dettagliata, vedi [`IT_GUIDE.md`](Docs/IT_Guide.md).**
+> **Per la guida dettagliata, vedi [`IT_GUIDE.md`](../Docs/IT_Guide.md).**
 
 ---
 
@@ -145,8 +145,8 @@ Ogni passaggio include: la spiegazione del *perché*, i comandi esatti da copiar
 
 Questa guida è mantenuta con cura, ma gli errori capitano. Hai trovato un refuso, un comando obsoleto o qualcosa da migliorare?
 
-1. **Apri una [Issue](../../issues)** per segnalare il problema
-2. **Invia una [Pull Request](../../pulls)** con le tue correzioni
+1. **Apri una [Issue](../../../issues)** per segnalare il problema
+2. **Invia una [Pull Request](../../../pulls)** con le tue correzioni
 
 ---
 
