@@ -157,7 +157,7 @@ Diese Anleitung wird sorgfältig gepflegt, aber Fehler passieren. Ein Tippfehler
 | [PaperMC Discord](https://discord.gg/papermc) | Fragen zum Minecraft-Server |
 | [Playit.gg Discord](https://discord.gg/playit) | Tunnel‑ / Netzwerkprobleme |
 | [Stack Overflow](https://stackoverflow.com) | Linux‑ / Java‑Fehler mit Tags `[minecraft]` `[github-codespaces]` |
-| [GitHub Issues](../../issues) | Spezifische Probleme mit dieser Anleitung |
+| [GitHub Issues](../../../issues) | Spezifische Probleme mit dieser Anleitung |
 
 ---
 
