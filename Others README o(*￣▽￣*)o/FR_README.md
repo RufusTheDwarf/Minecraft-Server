@@ -95,7 +95,7 @@ bash start.sh
 # 5. Ouvrez Crafty Controller sur le port 8443
 ```
 
-> **Pour le guide détaillé, voir [`FR_GUIDE.md`](Docs/FR_Guide.md).**
+> **Pour le guide détaillé, voir [`FR_GUIDE.md`](../Docs/FR_Guide.md).**
 
 ---
 
