@@ -78,7 +78,7 @@ Voir le guide dans le dossier "tutorial"
 
 ⚠️ Section actuellement en construction.
 Les informations ci-dessous ne sont que des prévisions.
-Voir le guide dans le dossier "tutorial"
+Voir le guide dans le dossier [`tutorial`](Tutorial)
 
 
 ```bash
@@ -99,7 +99,7 @@ bash start.sh
 
 ---
 
-## 🗂️ Contenu du guide ( À venir )
+## 🗂️ Contenu du guide
 
 Le fichier `FR_GUIDE.md` couvre les 17 étapes suivantes :
 
