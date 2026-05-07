@@ -164,7 +164,7 @@ Ce guide est maintenu avec soin, mais les erreurs arrivent. Vous avez repéré u
 | [Discord PaperMC](https://discord.gg/papermc) | Questions sur le serveur Minecraft |
 | [Discord Playit.gg](https://discord.gg/playit) | Problèmes de tunnel réseau |
 | [Stack Overflow](https://stackoverflow.com) | Erreurs Linux / Java tags `[minecraft]` `[github-codespaces]` |
-| [Issues GitHub](../../issues) | Problèmes spécifiques à ce guide |
+| [Issues GitHub](../../../issues) | Problèmes spécifiques à ce guide |
 
 ---
 
