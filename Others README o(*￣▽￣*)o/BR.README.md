@@ -171,7 +171,7 @@ Distribuído sob a licença **MIT**. Livre para usar, modificar e redistribuir, 
 
 **Pronto para jogar?**
 
-### 👉 [Abrir o guia completo – BR_Guide.md](Tutorial/🇧🇷Br_Guide.md)
+### 👉 [Abrir o guia completo - BR_Guide.md](Tutorial/🇧🇷Br_Guide.md)
 
 *Agradecemos às comunidades PaperMC, Crafty Controller, Playit.gg e GitHub.*
 
